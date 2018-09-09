@@ -28,21 +28,16 @@ class Spinner {
     this.frameIdx = 0
     this.text = this.options.text
     this.color = this.options.color
-    this.init = false
   }
 
   start() {
-    this.init = true
-    this.render()
-    this.init = false
+    process.stderr.write(this.frame())
     this.id = setInterval(this.render.bind(this), interval)
     return this
   }
 
   render() {
-    if (!this.init) {
-      this.clear()
-    }
+    this.clear()
     process.stderr.write(this.frame())
     return this
   }
